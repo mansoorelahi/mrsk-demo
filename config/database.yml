@@ -23,7 +23,8 @@ default: &default
 
 development:
   <<: *default
-  database: mrsk_demo_development
+  url: <%= Rails.application.credentials.database_url %>
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -81,6 +82,6 @@ test:
 #
 production:
   <<: *default
-  database: mrsk_demo_production
-  username: mrsk_demo
-  password: <%= ENV["MRSK_DEMO_DATABASE_PASSWORD"] %>
+  # Add credentials to config/credentials.yml.enc
+  url: <%= Rails.application.credentials.database_url %>
+
